@@ -41,7 +41,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section className="relative h-[70vh] md:h-screen overflow-hidden">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
