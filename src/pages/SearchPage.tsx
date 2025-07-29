@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Search, X, TrendingUp, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import Header from '@/components/Header';
+
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import collectionImage from '@/assets/collection-showcase.jpg';
@@ -62,7 +62,6 @@ const SearchPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-16">
         {/* Search Header */}
         <div className="bg-muted/30 py-8">

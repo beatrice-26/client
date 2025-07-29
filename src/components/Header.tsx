@@ -2,9 +2,17 @@ import { useState } from 'react';
 import { Menu, X, Search, ShoppingBag, User, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useCart } from '@/contexts/CartContext';
+import { useWishlist } from '@/contexts/WishlistContext';
 
-const Header = () => {
+interface HeaderProps {
+  onCartOpen: () => void;
+}
+
+const Header = ({ onCartOpen }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { cartCount } = useCart();
+  const { wishlistCount } = useWishlist();
 
   const navItems = [
     { name: 'Men', href: '/men' },
@@ -51,18 +59,23 @@ const Header = () => {
               </Button>
             </Link>
             <Link to="/wishlist">
-              <Button variant="ghost" size="icon">
-                <Heart className="h-5 w-5" />
-              </Button>
-            </Link>
-            <Link to="/cart">
               <Button variant="ghost" size="icon" className="relative">
-                <ShoppingBag className="h-5 w-5" />
-                <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  2
-                </span>
+                <Heart className="h-5 w-5" />
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium">
+                    {wishlistCount > 9 ? '9+' : wishlistCount}
+                  </span>
+                )}
               </Button>
             </Link>
+            <Button variant="ghost" size="icon" className="relative" onClick={onCartOpen}>
+              <ShoppingBag className="h-5 w-5" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium">
+                  {cartCount > 9 ? '9+' : cartCount}
+                </span>
+              )}
+            </Button>
 
             {/* Mobile Menu Button */}
             <Button

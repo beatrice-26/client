@@ -3,6 +3,8 @@ import { Heart, ShoppingCart, Star, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Link } from 'react-router-dom';
+import { useCart } from '@/contexts/CartContext';
+import { useWishlist } from '@/contexts/WishlistContext';
 
 interface Product {
   id: number;
@@ -26,19 +28,38 @@ interface ProductCardProps {
 
 const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isInWishlist, setIsInWishlist] = useState(false);
+  const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+
+  const inWishlist = isInWishlist(product.id);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
-    // TODO: Implement add to cart functionality with Supabase
-    console.log('Added to cart:', product.name);
+    addToCart({
+      id: product.id,
+      name: product.name,
+      brand: product.brand,
+      price: product.price,
+      size: product.sizes[0] || 'M',
+      color: product.colors[0] || 'Black',
+      image: product.image,
+    });
   };
 
   const handleToggleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
-    setIsInWishlist(!isInWishlist);
-    // TODO: Implement wishlist functionality with Supabase
-    console.log('Toggled wishlist:', product.name);
+    if (inWishlist) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist({
+        id: product.id,
+        name: product.name,
+        brand: product.brand,
+        price: product.price,
+        image: product.image,
+        originalPrice: product.originalPrice || undefined,
+      });
+    }
   };
 
   const getColorClass = (color: string) => {
@@ -134,9 +155,9 @@ const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) => {
                   variant="outline"
                   size="sm"
                   onClick={handleToggleWishlist}
-                  className={isInWishlist ? 'text-red-500' : ''}
+                  className={inWishlist ? 'text-red-500' : ''}
                 >
-                  <Heart className={`h-4 w-4 ${isInWishlist ? 'fill-current' : ''}`} />
+                  <Heart className={`h-4 w-4 ${inWishlist ? 'fill-current' : ''}`} />
                 </Button>
                 <Button
                   size="sm"
@@ -186,12 +207,12 @@ const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) => {
           <Button
             size="icon"
             variant="ghost"
-            className={`absolute top-3 right-3 bg-background/80 hover:bg-background transition-all ${
-              isInWishlist ? 'text-red-500' : ''
+                   className={`absolute top-3 right-3 bg-background/80 hover:bg-background transition-all ${
+              inWishlist ? 'text-red-500' : ''
             }`}
             onClick={handleToggleWishlist}
           >
-            <Heart className={`h-4 w-4 ${isInWishlist ? 'fill-current' : ''}`} />
+            <Heart className={`h-4 w-4 ${inWishlist ? 'fill-current' : ''}`} />
           </Button>
 
           {/* Hover Overlay */}

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Heart, ShoppingCart, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import Header from '@/components/Header';
+
 import Footer from '@/components/Footer';
 import collectionImage from '@/assets/collection-showcase.jpg';
 
@@ -48,7 +48,6 @@ const WishlistPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-16">
         <div className="container mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-8">

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
-import Header from '@/components/Header';
+
 import Footer from '@/components/Footer';
 import collectionImage from '@/assets/collection-showcase.jpg';
 
@@ -57,7 +57,6 @@ const CartPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-16">
         <div className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-light tracking-wide mb-8">Shopping Cart</h1>

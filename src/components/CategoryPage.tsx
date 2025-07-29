@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
-import Header from '@/components/Header';
+
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import collectionImage from '@/assets/collection-showcase.jpg';
@@ -51,7 +51,6 @@ const CategoryPage = ({ category }: { category: string }) => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-16">
         {/* Page Header */}
         <div className="bg-muted/30 py-16">

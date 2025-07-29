@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import Header from '@/components/Header';
+
 import Footer from '@/components/Footer';
 
 const ProfilePage = () => {
@@ -52,7 +52,6 @@ const ProfilePage = () => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-16">
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">

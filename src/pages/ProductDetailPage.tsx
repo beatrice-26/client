@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import Header from '@/components/Header';
+
 import Footer from '@/components/Footer';
 import ProductShowcase from '@/components/ProductShowcase';
 import collectionImage from '@/assets/collection-showcase.jpg';
@@ -69,7 +69,6 @@ const ProductDetailPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-16">
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

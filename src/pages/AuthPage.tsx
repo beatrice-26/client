@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
-import Header from '@/components/Header';
+
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -31,7 +31,6 @@ const AuthPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Header />
       <main className="pt-16 min-h-screen flex items-center justify-center bg-muted/30">
         <div className="w-full max-w-md p-8 bg-background rounded-lg shadow-lg">
           {/* Header */}
